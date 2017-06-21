@@ -1,15 +1,26 @@
 <nav class="navbar navbar-default">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <% if !!current_cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
-        <% if user_signed_in? %>
-            <li>Signed in as <%= current_user.email %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-            <li> <%= link_to "sign in", new_user_session_path %></li>
-            <li> <%= link_to "Sign up", new_user_registration_path %></li>
-        <% end %>
-    </ul>
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Store Home", store_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <% if !!current_cart %>
+            <li> <%= link_to "Cart", cart_path(current_cart) %></li>
+            <% end %>
+            <% if user_signed_in? %>
+                <li><p class="navbar-text">Signed in as <%= current_user.email %></p></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                <li> <%= link_to "sign in", new_user_session_path %></li>
+                <li> <%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
+        </ul>
+    </div>
+</dvi>
 </nav>
